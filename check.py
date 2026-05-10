@@ -1,6 +1,7 @@
 import os
 import json
 import requests
+from datetime import date, timedelta
 
 # What you are watching for
 LOCATION = "costcotire-01248"
@@ -8,7 +9,6 @@ SERVICE_IDS = ["oRx5aUP6K3rriXvjR0WV", "8Npus5b4JBG4Xsg4EWNc"]
 RESOURCE_IDS = ["JozOBUXIJXgIwnO0wcvA", "aCwRPwlAIR3dqds1sRXA"]
 
 # Date window you care about. Anything outside this gets ignored.
-from datetime import date, timedelta
 _today = date.today()
 TARGET_FROM = _today.isoformat()
 TARGET_TO   = (_today + timedelta(days=30)).isoformat()
@@ -80,8 +80,8 @@ def main():
         # Do not flood the channel on the first run. Just record what is there.
         print(f"First run, recording {len(available)} dates without alerting")
     elif new:
-	body = ("New available date(s) at Costco Waterloo Tire Centre:\n\n"
-            	+ "\n".join(f"  - {d}" for d in new)
+        body = ("New available date(s) at Costco Waterloo Tire Centre:\n\n"
+                + "\n".join(f"  - {d}" for d in new)
                 + "\n\nBook here: https://waitwhile.com/locations/costcotire-01248/services/services?registration=booking&OMHRMzzTYuLW47ZlM2kD=2025+Toyota+Corolla+SE&service=8Npus5b4JBG4Xsg4EWNc")
         send_notification(f"Costco tire slot found: {len(new)} new date(s)", body)
         print(f"Notified about {len(new)} new dates: {new}")
