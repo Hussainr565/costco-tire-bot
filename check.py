@@ -92,4 +92,5 @@ def main():
 
 
 if __name__ == "__main__":
+    send_notification("Test", "Bot is alive and Discord works")
     main()
