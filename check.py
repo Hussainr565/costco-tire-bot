@@ -80,9 +80,9 @@ def main():
         # Do not flood the channel on the first run. Just record what is there.
         print(f"First run, recording {len(available)} dates without alerting")
     elif new:
-        body = ("New available date(s) at Costco Waterloo Tire Centre:\n\n"
-                + "\n".join(f"  - {d}" for d in new)
-                + "\n\nBook here: https://tires.costco.ca/Home")
+	body = ("New available date(s) at Costco Waterloo Tire Centre:\n\n"
+            	+ "\n".join(f"  - {d}" for d in new)
+                + "\n\nBook here: https://waitwhile.com/locations/costcotire-01248/services/services?registration=booking&OMHRMzzTYuLW47ZlM2kD=2025+Toyota+Corolla+SE&service=8Npus5b4JBG4Xsg4EWNc")
         send_notification(f"Costco tire slot found: {len(new)} new date(s)", body)
         print(f"Notified about {len(new)} new dates: {new}")
     else:
@@ -94,5 +94,4 @@ def main():
 
 
 if __name__ == "__main__":
-    send_notification("Test", "Bot is alive and Discord works")
     main()
