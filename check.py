@@ -8,8 +8,10 @@ SERVICE_IDS = ["oRx5aUP6K3rriXvjR0WV", "8Npus5b4JBG4Xsg4EWNc"]
 RESOURCE_IDS = ["JozOBUXIJXgIwnO0wcvA", "aCwRPwlAIR3dqds1sRXA"]
 
 # Date window you care about. Anything outside this gets ignored.
-TARGET_FROM = "2026-05-15"
-TARGET_TO   = "2026-06-12"
+from datetime import date, timedelta
+_today = date.today()
+TARGET_FROM = _today.isoformat()
+TARGET_TO   = (_today + timedelta(days=30)).isoformat()
 
 DISCORD_WEBHOOK = os.environ["DISCORD_WEBHOOK"]
 
